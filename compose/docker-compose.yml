@@ -1,5 +1,5 @@
 ---
-version: 2
+version: '2'
 services:
   web:
     image: nginx:latest
@@ -14,7 +14,7 @@ services:
 
   php:
     build: php-7.0-fpm-custom
-    evnironment:
+    environment:
       - TYPO3_CONTEXT=Development/Docker
     links:
       - db
@@ -25,11 +25,9 @@ services:
   db:
     image: mariadb:10.1
     environment:
-      - MYSQL_ROOT_PASSWORD=123
+      - MYSQL_ROOT_PASSWORD=secret
     volumes:
       - ./mysql:/var/lib/mysql
     
   redis:
     image: redis:latest
-
-    
